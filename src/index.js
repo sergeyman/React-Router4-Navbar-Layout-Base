@@ -17,12 +17,18 @@ function App() {
 }
 */
 
-<BrowserRouter>
+ReactDOM.render(
+  <BrowserRouter>
+    {/*
   <div className="container">
     <Route exact path="/" component={App} />
     <Route path="/about" component={About} />
   </div>
-</BrowserRouter>;
+*/}
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+//const rootElement = document.getElementById("root");
+//ReactDOM.render(<App />, rootElement);
