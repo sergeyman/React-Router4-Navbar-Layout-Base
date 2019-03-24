@@ -5,6 +5,7 @@ import About from "./components/About";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import "./styles.css";
+//import "./styles1.css";
 
 /*
 function App() {
