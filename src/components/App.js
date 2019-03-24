@@ -32,7 +32,7 @@ const Main = () => (
   </main>
 );
 
-const Header = () => (
+const HeaderBootstrap = () => (
   <div>
     <nav className="navbar navbar-expand-lg navbar-light  bg-primary fixed-top">
       <button
@@ -125,10 +125,55 @@ class NavLink extends Component {
   }
 }
 
+class HeaderStateHandle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      __links: [
+        { path: "/1", text: "Page 1", isActive: false },
+        { path: "/2", text: "Page 2", isActive: false },
+        { path: "/3", text: "Page 3", isActive: false }
+      ]
+    };
+  }
+
+  handleClick(i) {
+    const links = this.state.__links.slice();
+    for (const j in links) {
+      links[j].isActive = i = j;
+    }
+    this.setState({ __links: links });
+  }
+
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/">
+            Home
+          </Link>
+          <ul className="navbar-nav">
+            {this.state.__links.map((link, i) => (
+              <NavLink
+                path={link.path}
+                text={link.text}
+                isActive={link.isActive}
+                key={link.path}
+                onCllick={() => this.handleClick(i)}
+              />
+            ))}
+          </ul>
+        </nav>
+      </div>
+    );
+  }
+}
+
 const App = () => (
   <div>
-    <Header />
+    <HeaderBootstrap />
     <HeaderNavLink />
+    <HeaderStateHandle />
     <Main />
   </div>
 );
